@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Calculator</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --fg: #ffffff;
+      --input-bg: #dab6fc;
+      --button-bg: #b0d6d6;
+      --operator-bg: #66668e;
+      --equal-bg: #ff007f;
+      --clear-bg: #e74c3c;
+    }
+
+    body.light {
+      --bg: #ffffff;
+      --fg: #000000;
+      --input-bg: #f3e8ff;
+      --button-bg: #d2e9e9;
+      --operator-bg: #aaaacc;
+      --equal-bg: #ff4081;
+      --clear-bg: #ff6f61;
+    }
+
+    body {
+      background-color: #8759a3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .calc-container {
+      width: 300px;
+      background-color: var(--bg);
+      padding: 16px;
+      border-radius: 15px;
+      color: var(--fg);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      box-sizing: border-box;
+    }
+
+    .display input {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1.4rem;
+      padding: 12px;
+      background: var(--input-bg);
+      color: #2e003e;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .result {
+      text-align: right;
+      font-size: 1.2rem;
+      color: var(--fg);
+      margin-bottom: 10px;
+      min-height: 20px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 1rem;
+      background: var(--button-bg);
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background: #a1caca;
+    }
+
+    button.equal {
+      background-color: var(--equal-bg);
+      color: white;
+    }
+
+    button.operator {
+      background-color: var(--operator-bg);
+      color: white;
+    }
+
+    button.clear {
+      background-color: var(--clear-bg);
+      color: white;
+    }
+
+    .theme-toggle {
+      background: #8759a3;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="calc-container">
+    <button class="theme-toggle" onclick="toggleTheme()">🌗 Toggle Theme</button>
+    <div class="display">
+      <input type="text" id="expression" placeholder="Enter expression" />
+    </div>
+    <div class="result" id="result"></div>
+    <div class="buttons">
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button class="operator" onclick="append('/')">/</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button class="operator" onclick="append('*')">*</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button class="operator" onclick="append('-')">-</button>
+
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button onclick="append('(')">(</button>
+      <button onclick="append(')')">)</button>
+
+      <button class="clear" onclick="clearDisplay()">C</button>
+      <button onclick="append('π')">π</button>
+      <button onclick="append('e')">e</button>
+      <button class="operator" onclick="append('+')">+</button>
+
+      <button onclick="append('sin(')">sin</button>
+      <button onclick="append('cos(')">cos</button>
+      <button onclick="append('tan(')">tan</button>
+      <button onclick="append('log(')">log</button>
+
+      <button onclick="append('√(')">√</button>
+      <button onclick="append('^')">^</button>
+      <button onclick="backspace()">⌫</button>
+      <button class="equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('expression');
+    const resultDisplay = document.getElementById('result');
+
+    function append(val) {
+      input.value += val;
+    }
+
+    function clearDisplay() {
+      input.value = '';
+      resultDisplay.innerText = '';
+    }
+
+    function backspace() {
+      input.value = input.value.slice(0, -1);
+    }
+
+    function calculate() {
+      let expression = input.value;
+
+      expression = expression.replace(/π/g, 'Math.PI');
+      expression = expression.replace(/e/g, 'Math.E');
+      expression = expression.replace(/sin\(/g, 'Math.sin(');
+      expression = expression.replace(/cos\(/g, 'Math.cos(');
+      expression = expression.replace(/tan\(/g, 'Math.tan(');
+      expression = expression.replace(/log\(/g, 'Math.log10(');
+      expression = expression.replace(/√\(/g, 'Math.sqrt(');
+      expression = expression.replace(/\^/g, '**');
+
+      try {
+        const result = eval(expression);
+        resultDisplay.innerText = '= ' + result;
+      } catch (e) {
+        resultDisplay.innerText = 'Error';
+      }
+    }
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        calculate();
+      } else if (e.key === 'Backspace') {
+        backspace();
+      } else if (e.key === 'Escape') {
+        clearDisplay();
+      }
+    });
+
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+  </script>
+</body>
+</html>
