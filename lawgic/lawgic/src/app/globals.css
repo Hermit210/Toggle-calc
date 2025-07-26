@@ -1,0 +1,339 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* LexMint AI Legal Assistant - Custom Theme Configuration */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Mint green color palette */
+  --color-mint-50: var(--mint-50);
+  --color-mint-100: var(--mint-100);
+  --color-mint-200: var(--mint-200);
+  --color-mint-300: var(--mint-300);
+  --color-mint-400: var(--mint-400);
+  --color-mint-500: var(--mint-500);
+  --color-mint-600: var(--mint-600);
+  --color-mint-700: var(--mint-700);
+  --color-mint-800: var(--mint-800);
+  --color-mint-900: var(--mint-900);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.6 0.06 40); /* Brown primary */
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.9 0.03 40); /* Light brown accent */
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.6 0.06 40); /* Brown ring */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.6 0.06 40); /* Brown sidebar primary */
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.9 0.03 40); /* Light brown sidebar accent */
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.6 0.06 40); /* Brown sidebar ring */
+  
+  /* LexMint Custom Brown/Black Color Palette */
+  /* Professional brown and black theme for legal application */
+  --mint-50: oklch(0.98 0.01 40);     /* Very light brown for backgrounds */
+  --mint-100: oklch(0.95 0.02 40);    /* Light brown for subtle accents */
+  --mint-200: oklch(0.9 0.03 40);     /* Soft brown for borders and dividers */
+  --mint-300: oklch(0.8 0.04 40);     /* Medium-light brown for hover states */
+  --mint-400: oklch(0.7 0.05 40);     /* Medium brown for active states */
+  --mint-500: oklch(0.6 0.06 40);     /* Primary brown color */
+  --mint-600: oklch(0.5 0.05 40);     /* Darker brown for emphasis */
+  --mint-700: oklch(0.4 0.04 40);     /* Dark brown for text on light backgrounds */
+  --mint-800: oklch(0.3 0.03 40);     /* Very dark brown for high contrast */
+  --mint-900: oklch(0.2 0.02 40);     /* Darkest brown/black for maximum contrast */
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.6 0.07 40); /* Brown primary for dark mode */
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.35 0.04 40); /* Dark brown accent */
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.75 0.18 150); /* Mint green ring for dark mode */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.75 0.18 150); /* Mint green sidebar primary for dark mode */
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.35 0.12 150); /* Dark mint sidebar accent */
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.75 0.18 150); /* Mint green sidebar ring for dark mode */
+  
+  /* LexMint Custom Brown/Black Color Palette for Dark Mode */
+  /* Inverted and adjusted for dark theme accessibility */
+  --mint-50: oklch(0.25 0.02 40);     /* Darkest brown for dark mode backgrounds */
+  --mint-100: oklch(0.3 0.03 40);     /* Dark brown for subtle accents */
+  --mint-200: oklch(0.35 0.04 40);    /* Medium-dark brown for borders */
+  --mint-300: oklch(0.4 0.05 40);     /* Medium brown for hover states */
+  --mint-400: oklch(0.5 0.06 40);     /* Medium-light brown for active states */
+  --mint-500: oklch(0.6 0.07 40);     /* Primary brown for dark mode */
+  --mint-600: oklch(0.7 0.06 40);     /* Light brown for emphasis */
+  --mint-700: oklch(0.8 0.05 40);     /* Lighter brown for text on dark backgrounds */
+  --mint-800: oklch(0.85 0.04 40);    /* Very light brown for high contrast */
+  --mint-900: oklch(0.9 0.03 40);     /* Lightest brown for maximum contrast */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-mint-400 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-mint-500;
+  }
+}
+
+@layer components {
+  /* LexMint specific component utilities */
+  .mint-gradient-primary {
+    background: linear-gradient(135deg, var(--color-mint-400), var(--color-mint-600));
+  }
+  
+  .mint-gradient-secondary {
+    background: linear-gradient(135deg, var(--color-mint-200), var(--color-mint-400));
+  }
+  
+  .mint-gradient-subtle {
+    background: linear-gradient(135deg, var(--color-mint-50), var(--color-mint-200));
+  }
+  
+  .mint-text-gradient {
+    background: linear-gradient(135deg, var(--color-mint-600), var(--color-mint-800));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Loading spinner with mint theme */
+  .mint-spinner {
+    @apply animate-spin rounded-full border-2 border-mint-200 border-t-mint-500;
+  }
+  
+  /* Card with mint theme */
+  .mint-card {
+    @apply bg-card border border-mint-200 rounded-lg shadow-sm;
+  }
+  
+  .mint-card-highlighted {
+    @apply bg-card border border-mint-300 rounded-lg shadow-lg;
+  }
+  
+  /* Button variants with mint theme */
+  .mint-button-primary {
+    @apply bg-mint-500 hover:bg-mint-600 active:bg-mint-700 text-white border border-mint-500 hover:border-mint-600 active:border-mint-700 transition-colors duration-200;
+  }
+  
+  .mint-button-secondary {
+    @apply bg-mint-100 hover:bg-mint-200 active:bg-mint-300 text-mint-800 border border-mint-200 hover:border-mint-300 active:border-mint-400 transition-colors duration-200;
+  }
+  
+  .mint-button-outline {
+    @apply bg-transparent hover:bg-mint-50 active:bg-mint-100 text-mint-600 hover:text-mint-700 active:text-mint-800 border border-mint-500 hover:border-mint-600 active:border-mint-700 transition-colors duration-200;
+  }
+  
+  /* Input with mint theme */
+  .mint-input {
+    @apply border-border focus:border-mint-500 focus:ring-2 focus:ring-mint-500/20 transition-colors duration-200;
+  }
+  
+  /* Mobile-optimized touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  .animate-pulse-mint {
+    animation: pulseMint 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Responsive text utilities */
+  .text-responsive-sm {
+    @apply text-sm md:text-base;
+  }
+  
+  .text-responsive-base {
+    @apply text-base md:text-lg;
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg md:text-xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl md:text-2xl;
+  }
+  
+  /* Spacing utilities for mobile optimization */
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseMint {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--color-mint-400);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px transparent;
+    transform: scale(1.05);
+  }
+}
